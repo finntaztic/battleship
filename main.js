@@ -19,70 +19,47 @@ class Ship {
 
 class Gameboard {
     marked = [];
-    //create three block ship??then place it? 
 
-    // placeShip (midBlock){
-    //     const right = [midBlock[0] + 1, midBlock[1]];
-    //     const left = [midBlock[0] - 1, midBlock[1]];
-
-    //     let list = [right, midBlock, left];
-
-    //     for (let i = 0; i < list.length; i++){
-    //         if (list[i][0] <= 9 && list [i][0] >= 0){
-    //             //continue checking
-    //         } else {
-    //             return;
-    //         }
-    //     }
-
-    //     list.forEach((item) => {
-    //         this.marked.push(item)
-    //     });
-
-    //     console.log(this.marked)
-    // }
-
-    placeShip (ship, length){
-
-        //offsets 
+    placeShip (ship, length, orientation){
         const start = -Math.floor(length/2);
-        const end = Math.floor(length/2);
+        const cells = [];
 
         for (let i = 0; i < length; i++){
-            // let currPos = ship[0] + start;
-            // console.log(currPos)
+            if (orientation === 'horizontal'){
+                let curr = start + i;
+                let cell = [ship[0] + curr, ship[1]]
 
-            let curr = start + i;
-            console.log(curr)
+                if (cell[0] <= 7 && cell[0] >= 0){
+                    cells.push(cell)
+                } else {
+                    return;
+                }
+            } else if (orientation === 'vertical'){
+                let curr = start + i;
+                let cell = [ship[0], ship[1] + curr]
 
-            // let curr = start;
-            // curr++
-            // console.log(curr)
+                if (cell[1] <= 7 && cell[1] >= 0){
+                    cells.push(cell)
+                } else {
+                    return;
+                }
+            }
         }
 
+        //compare marked cells to incoming pushed cell
+        for (let i = 0; i < cells.length; i++){
+            for (let j = 0; j < this.marked.length; j++){
+                if (cells[i][0] === this.marked[j][0] && cells[i][1] === this.marked[j][1]){
+                    return;
+                }
+            }
+        }
 
+        cells.forEach((cell) => {
+            this.marked.push(cell)
+        })
 
-        // const mid = ship.length-1/2
-        // const right = [midBlock[0] + 1, midBlock[1]];
-        // const left = [midBlock[0] - 1, midBlock[1]];
-
-
-
-        // let list = [right, midBlock, left];
-
-        // for (let i = 0; i < list.length; i++){
-        //     if (list[i][0] <= 9 && list [i][0] >= 0){
-        //         //continue checking
-        //     } else {
-        //         return;
-        //     }
-        // }
-
-        // list.forEach((item) => {
-        //     this.marked.push(item)
-        // });
-
-        // console.log(this.marked)
+        console.log(this.marked)
     }
 }
     // receiveAttack (x, y){
@@ -96,10 +73,7 @@ class Gameboard {
 // }
 
 const gameboard = new Gameboard();
-gameboard.placeShip([8,2], 5)
-
-// const gameboard = new Gameboard ();
-// console.log(gameboard.placeShip([9]))
+gameboard.placeShip([3,4], 4, 'vertical')
 
 class Player {
     // const human;
