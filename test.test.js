@@ -1,6 +1,7 @@
 
 const {Ship, Gameboard, Player} = require('./main')
 
+
 test('hit test', () => {
     let ship = new Ship()
     ship.addHit();  
