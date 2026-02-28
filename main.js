@@ -1,5 +1,5 @@
 
-class Ship {
+export class Ship {
     constructor(length, hit, sunk){
         this.length = length;
         this.hit = 0;
@@ -18,7 +18,7 @@ class Ship {
     }
 }
 
-class Gameboard {
+export class Gameboard {
     constructor(){
         this.ships = [];
         this.miss = [];
@@ -33,18 +33,21 @@ class Gameboard {
         for (let i = 0; i < length; i++){
             if (orientation === 'horizontal'){
                 let curr = start + i;
-                let cell = [mid[0] + curr, mid[1]]
+                
+                let cell = [mid[0], mid[1] + curr]
 
-                if (cell[0] <= 7 && cell[0] >= 0){
+                if (cell[1] <= 6 && cell[1] >= 0){
                     cells.push(cell)
                 } else {
                     return;
                 }
-            } else if (orientation === 'vertical'){
+            } 
+            
+            else if (orientation === 'vertical'){
                 let curr = start + i;
-                let cell = [mid[0], mid[1] + curr]
+                let cell = [mid[0] + curr, mid[1]]
 
-                if (cell[1] <= 7 && cell[1] >= 0){
+                if (cell[0] <= 6 && cell[0] >= 0){
                     cells.push(cell)
                 } else {
                     return;
@@ -93,11 +96,9 @@ class Gameboard {
 }
 
 
-class Player {
+export class Player {
     constructor(type){
         this.type = type;
         this.gameBoard = new Gameboard();
     }
 }
-
-module.exports =  {Ship, Gameboard, Player}

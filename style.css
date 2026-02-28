@@ -1,0 +1,49 @@
+.human {
+    background-color: skyblue; 
+    display: grid;
+    row-gap: 0;
+    column-gap: 0;
+    width: 21em;
+    height: 21em;
+    grid-template-columns: repeat(7, 3em);
+    grid-template-rows: repeat(7, 3em);
+    outline: 1px solid black;
+
+}
+
+.human > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid black;
+}
+
+.computer {
+    background-color: pink; 
+    display: grid;
+    row-gap: 0;
+    column-gap: 0;
+    width: 21em;
+    height: 21em;
+    grid-template-columns: repeat(7, 3em);
+    grid-template-rows: repeat(7, 3em);
+    outline: 1px solid black;
+
+}
+
+.computer > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid black;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 2em;
+    gap: 2em;
+}

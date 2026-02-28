@@ -1,14 +1,12 @@
-import { Player } from "./main";
+import { Game } from "./game.js";
+
+const btn = document.querySelector('button');
 
 
-function newGame(){
-    const p1 = new Player('human');
-    const p2 = new Player('computer')
+btn.addEventListener('click', () => {
+    // e.preventDefault.Default();
+    // Game().newGame();
+    Game().makeGrid();
 
-    console.log(p1)
-    console.log(p2)
-}
-
-newGame();
-
+})
 
